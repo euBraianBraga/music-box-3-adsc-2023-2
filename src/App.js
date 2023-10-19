@@ -1,5 +1,9 @@
 import api from "./api";
 import { useState } from "react";
+import "./html-css-template/css/style.css";
+import "./html-css-template/css/reset.css";
+import Musicas from "./Musicas";
+
 function App() {
   const [musicas, setMusicas] = useState([]);
   // criando state com valor de um vetor vazio;
@@ -25,17 +29,10 @@ function App() {
         console.log(erroOcorrido);
       });
   }
+
   return (
     <>
-      <h1>Titulo</h1>
-      <button onClick={listar}>Listar</button>
-      {musicas.map((musica) => (
-        <div key={musica.id}>
-          <h1>{musica.nome}</h1>
-          <h1>{musica.artista}</h1>
-          <br />
-        </div>
-      ))}
+      <Musicas />
     </>
   );
 }

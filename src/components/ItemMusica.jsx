@@ -1,31 +1,44 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import capaPadrao from "../html-css-template/imagens/capa.png";
 
 function ItemMusica(props) {
+
+    const [imageUrl, setImageUrl] = useState([]);
+
+    useEffect(() => {
+        setImageUrl(`${props.capa}?random=${Math.random()}`);
+    }, [props.capa]);
+
+
+    const estiloCard = {
+        backgroundImage: `url(${props.capa ? imageUrl : capaPadrao})`,
+    }
+
     return (
         <>
-            <div class="card-music">
-                <div class="icons">
+            <div style={estiloCard} className="card-music">
+                <div className="icons">
                     <img src="../imagens/edit-icon.png" alt="" />
                     <img src="../imagens/delete-icon.png" alt="" />
                 </div>
-                <div class="info-music">
+                <div className="info-music">
                     <p>
-                        <strong class="card-title">música: </strong>
-                        <input class="input-music-enable" type="text" value={props.banana} />
+                        <strong className="card-title">música: </strong>
+                        <input className="input-music-enable" type="text" defaultValue={props.nome} />
                     </p>
                     <p>
-                        <strong class="card-title">artista: </strong>
-                        <input class="input-music-enable" type="text" value={props.artista} />
+                        <strong className="card-title">artista: </strong>
+                        <input className="input-music-enable" type="text" defaultValue={props.artista} />
                     </p>
                     <p>
-                        <strong class="card-title">categoria: </strong>
-                        <input class="input-music-enable" type="text" value={props.genero} />
+                        <strong className="card-title">categoria: </strong>
+                        <input className="input-music-enable" type="text" defaultValue={props.genero} />
                     </p>
                     <p>
-                        <strong class="card-title">ano: </strong>
-                        <input class="input-music-enable" type="text" value={props.ano} />
+                        <strong className="card-title">ano: </strong>
+                        <input className="input-music-enable" type="text" defaultValue={props.ano} />
                     </p>
-                    <button class="btn-salvar-enable">Salvar</button>
+                    <button className="btn-salvar-enable">Salvar</button>
                 </div>
             </div>
         </>
